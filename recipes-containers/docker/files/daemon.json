@@ -1,0 +1,4 @@
+{
+	"data-root": "/usr/local/docker",
+	"storage-driver": "overlay2"
+}
