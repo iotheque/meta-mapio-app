@@ -1,0 +1,11 @@
+[Unit]
+Description=MAPIO display service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mapio_display app
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

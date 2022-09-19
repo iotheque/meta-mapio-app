@@ -22,4 +22,5 @@ RDEPENDS:${PN} = "\
     python3-gpiod \
     python3-pillow \
     python3-spidev \
+    python3-netifaces \
 "
