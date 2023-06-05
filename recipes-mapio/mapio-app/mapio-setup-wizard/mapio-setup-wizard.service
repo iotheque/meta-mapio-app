@@ -1,0 +1,11 @@
+[Unit]
+Description=MAPIO SETUP WIZARD service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mapio_setup_wizard app
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
