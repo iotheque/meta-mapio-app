@@ -18,9 +18,9 @@ services:
       - /usr/local/zigbee2mqtt:/app/data
       - /run/udev:/run/udev:ro
     environment:
-      - TZ=Europe/Berlin
+      - TZ=Europe/Paris
     devices:
-      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/ttyS1:/dev/ttyACM0
     network_mode: host
 
   nginx:

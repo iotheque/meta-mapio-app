@@ -9,15 +9,15 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+    pid: host
     volumes:
       - /mnt/movies:/share
       - /usr/local/samba/smb.conf:/etc/samba/smb.conf
 
   avahi:
     image: epandi/avahi
-    environment:
-      - REFLECTOR_ENABLE_REFLECTOR=yes
     volumes:
       - /usr/local/avahi/services/:/etc/avahi/services
     restart: unless-stopped
     network_mode: host
+    pid: host
