@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  samba:
+    image: dperson/samba
+    environment:
+      - TZ=/etc/timezone:/etc/timezone:ro
+    network_mode: host
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    pid: host
+    volumes:
+      - /mnt/movies:/share
+      - /usr/local/samba/smb.conf:/etc/samba/smb.conf
+
+  avahi:
+    image: epandi/avahi
+    volumes:
+      - /usr/local/avahi/services/:/etc/avahi/services
+    restart: unless-stopped
+    network_mode: host
+    pid: host

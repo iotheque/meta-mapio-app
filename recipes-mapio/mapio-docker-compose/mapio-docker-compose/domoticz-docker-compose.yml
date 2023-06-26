@@ -13,3 +13,26 @@ services:
       - /usr/local/domoticz:/opt/domoticz/userdata
     environment:
       - TZ=Europe/Paris
+
+  homebridge:
+    image: oznu/homebridge:raspberry-pi
+    container_name: homebridge
+    restart: always
+    network_mode: host
+    volumes:
+      - /usr/local/homebridge:/homebridge
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    
+    nginx:
+      container_name: nginx
+      image: nginx
+      privileged: true
+      network_mode: host
+      volumes:
+         - /usr/local/nginx/default.conf:/etc/nginx/conf.d/default.conf
+         - /usr/local/nginx/certs:/usr/local/certificates
+      restart: unless-stopped

@@ -1,0 +1,11 @@
+[Unit]
+Description=NVME disk
+
+[Mount]
+What=/dev/nvme0n1
+Where=/mnt
+Type=ext4
+Options=defaults
+
+[Install]
+WantedBy=multi-user.target

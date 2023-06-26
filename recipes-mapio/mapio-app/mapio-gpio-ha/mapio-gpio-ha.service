@@ -1,0 +1,13 @@
+[Unit]
+Description=MAPIO GPIO HA service
+After=mosquitto.service
+Wants=mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mapio_gpio_ha app
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
