@@ -10,6 +10,7 @@ mkdir -p /usr/local/homeassistant
 mkdir -p /usr/local/zigbee2mqtt
 mkdir -p /usr/local/samba
 mkdir -p /usr/local/avahi
+mkdir -p /usr/local/nvme
 
 # Signal that first boot has been done
 touch /boot/first_boot_done

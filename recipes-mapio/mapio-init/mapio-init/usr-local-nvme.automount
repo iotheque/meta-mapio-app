@@ -1,0 +1,8 @@
+[Unit]
+Description=NVMe automount
+
+[Automount]
+Where=/usr/local/nvme
+
+[Install]
+WantedBy=multi-user.target

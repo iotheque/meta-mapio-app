@@ -6,14 +6,16 @@ LICENSE = "CLOSED"
 SRC_URI = "\
     file://mapio-init.sh \
     file://mapio-init.service \
-    file://mnt.mount \
+    file://usr-local-nvme.mount \
+    file://usr-local-nvme.automount \
     file://os-version\
    "
 
 inherit systemd
 
 FILES:${PN} += "${systemd_unitdir}/system/mapio-init.service"
-FILES:${PN} += "${systemd_unitdir}/system/mnt.mount"
+FILES:${PN} += "${systemd_unitdir}/system/usr-local-nvme.mount"
+FILES:${PN} += "${systemd_unitdir}/system/usr-local-nvme.automount"
 FILES:${PN} += "${bindir}/mapio-init.sh"
 
 RDEPENDS:${PN} = "\
@@ -22,8 +24,7 @@ RDEPENDS:${PN} = "\
 "
 
 SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE:${PN} = "mapio-init.service"
-SYSTEMD_SERVICE:${PN} = "mnt.mount"
+SYSTEMD_SERVICE:${PN} = "mapio-init.service usr-local-nvme.automount"
 
 do_install:append() {
     # MAPIO OS version
@@ -35,5 +36,6 @@ do_install:append() {
     install -m 0744 ${WORKDIR}/mapio-init.sh ${D}${bindir}
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/mapio-init.service ${D}/${systemd_unitdir}/system/
-    install -m 0644 ${WORKDIR}/mnt.mount ${D}/${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/usr-local-nvme.mount ${D}/${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/usr-local-nvme.automount ${D}/${systemd_unitdir}/system/
 }
