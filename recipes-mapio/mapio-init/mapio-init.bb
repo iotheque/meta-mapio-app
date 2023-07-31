@@ -20,6 +20,8 @@ FILES:${PN} += "${bindir}/mapio-init.sh"
 
 RDEPENDS:${PN} = "\
     bash \
+    bash-completion \
+    systemd-bash-completion \
     e2fsprogs-resize2fs \
 "
 
