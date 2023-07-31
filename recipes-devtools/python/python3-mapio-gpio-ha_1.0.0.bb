@@ -1,5 +1,6 @@
 SUMMARY = "MAPIO GPIO HA python module"
-DESCRIPTION = "This Python wheel contains the applicative code to manage some \
+DESCRIPTION = "\
+    This Python wheel contains the applicative code to manage some \
 MAPIO GPIOs from Home Assistant."
 
 HOMEPAGE = "https://github.com/pcurt/mapio_gpio_ha"

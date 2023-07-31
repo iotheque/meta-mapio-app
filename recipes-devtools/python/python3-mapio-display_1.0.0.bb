@@ -1,5 +1,6 @@
 SUMMARY = "MAPIO diplay python module management"
-DESCRIPTION = "This Python wheel contains the applicative code to drive the \
+DESCRIPTION = "\
+    This Python wheel contains the applicative code to drive the \
 MAPIO epaper display. The epaper is a waveshare 2in13 V3 \
 (https://www.waveshare.com/product/displays/e-paper/epaper-3/2.13inch-e-paper.htm)"
 

@@ -1,6 +1,7 @@
 SUMMARY = "Arbitrary homeassistant devices in python using mqtt as interface "
-DESCRIPTION = "This Python wheel contains bindings to implement arbitrary \
-homeassistant devices in python using mqtt as interface."
+DESCRIPTION = "\
+    This Python wheel contains bindings to implement arbitrary \
+    homeassistant devices in python using mqtt as interface."
 
 HOMEPAGE = "https://gitlab.com/anphi/homeassistant-mqtt-binding"
 SECTION = "devel/python"

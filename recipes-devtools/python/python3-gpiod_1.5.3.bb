@@ -1,6 +1,7 @@
 SUMMARY = "Python library to control gpio using libgpiod "
-DESCRIPTION = "This Python wheel contains the generated code to interact with \
-GPIOs using libgpiod."
+DESCRIPTION = "\
+    This Python wheel contains the generated code to interact with \
+    GPIOs using libgpiod."
 
 HOMEPAGE = "https://github.com/hhk7734/python3-gpiod"
 SECTION = "devel/python"

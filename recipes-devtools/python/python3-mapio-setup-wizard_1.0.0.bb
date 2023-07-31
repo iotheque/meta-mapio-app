@@ -1,6 +1,7 @@
 SUMMARY = "MAPIO SETUP WIZARD python module"
-DESCRIPTION = "This Python wheel contains the flask webserver that configures \
-MAPIO board and OS."
+DESCRIPTION = "\
+    This Python wheel contains the flask webserver that configures \
+    MAPIO board and OS."
 
 HOMEPAGE = "https://github.com/pcurt/mapio-setup-wizard"
 SECTION = "devel/python"
