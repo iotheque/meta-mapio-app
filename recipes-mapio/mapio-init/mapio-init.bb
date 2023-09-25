@@ -17,12 +17,15 @@ FILES:${PN} += "${systemd_unitdir}/system/mapio-init.service"
 FILES:${PN} += "${systemd_unitdir}/system/usr-local-nvme.mount"
 FILES:${PN} += "${systemd_unitdir}/system/usr-local-nvme.automount"
 FILES:${PN} += "${bindir}/mapio-init.sh"
+FILES:${PN} += "/usr/local"
+FILES:${PN} += "/data/nvme"
 
 RDEPENDS:${PN} = "\
     bash \
     bash-completion \
-    systemd-bash-completion \
     e2fsprogs-resize2fs \
+    parted \
+    systemd-bash-completion \
 "
 
 SYSTEMD_AUTO_ENABLE = "enable"
@@ -40,4 +43,8 @@ do_install:append() {
     install -m 0644 ${WORKDIR}/mapio-init.service ${D}/${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/usr-local-nvme.mount ${D}/${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/usr-local-nvme.automount ${D}/${systemd_unitdir}/system/
+
+    # Create mountpoints in data partitiion
+    install -d ${D}/usr/local
+    install -d ${D}/data/nvme
 }

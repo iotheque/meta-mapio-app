@@ -1,16 +1,10 @@
 #!/bin/bash
 
 # Resize data partiton to maximal size
-resize2fs /dev/mmcblk1p4
-
-# Create volume directories for containers
-mkdir -p /usr/local/domoticz
-mkdir -p /usr/local/homebridge
-mkdir -p /usr/local/homeassistant
-mkdir -p /usr/local/zigbee2mqtt
-mkdir -p /usr/local/samba
-mkdir -p /usr/local/avahi
-mkdir -p /usr/local/nvme
+umount /dev/mmcblk1p4
+parted -s /dev/mmcblk1 resizepart 4 100%
+resize2fs -f /dev/mmcblk1p4
+mount /dev/mmcblk1p4 /usr/local
 
 # Signal that first boot has been done
 touch /boot/first_boot_done
