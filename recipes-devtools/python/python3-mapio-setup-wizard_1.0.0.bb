@@ -9,7 +9,7 @@ LICENSE = "CLOSED"
 
 PYPI_SRC_URI = "git://github.com/pcurt/mapio-setup-wizard;protocol=https;branch=main"
 SRC_URI = ""
-SRCREV = "11fe7c241eec063910687fff369bb786c8d2fcdc"
+SRCREV = "7f365933781686dc2d89a39ca85c202988dc0bb3"
 
 inherit setuptools3 pypi
 
@@ -18,5 +18,6 @@ S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} = "\
     python3-flask \
-    python3-flask-login \
+    python3-waitress \
 "
+
