@@ -10,7 +10,7 @@ LICENSE = "CLOSED"
 
 PYPI_SRC_URI = "git://github.com/pcurt/mapio_display;protocol=https;branch=dev"
 SRC_URI = ""
-SRCREV = "b9b5c442f531d86783f759f6ecbae54ae708e503"
+SRCREV = "522063f634e40581bce335e3d6f546db5f0e94d8"
 
 inherit setuptools3 pypi
 
