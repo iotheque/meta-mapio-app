@@ -8,7 +8,6 @@ SRC_URI = "\
     file://mapio-init.service \
     file://usr-local-nvme.mount \
     file://usr-local-nvme.automount \
-    file://os-version\
    "
 
 inherit systemd
@@ -32,10 +31,6 @@ SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE:${PN} = "mapio-init.service usr-local-nvme.automount"
 
 do_install:append() {
-    # MAPIO OS version
-    install -d ${D}${sysconfdir}
-    install -m 0666 ${WORKDIR}/os-version ${D}${sysconfdir}
-
     # MAPIO OS initialisation
     install -d ${D}${bindir}
     install -m 0744 ${WORKDIR}/mapio-init.sh ${D}${bindir}
