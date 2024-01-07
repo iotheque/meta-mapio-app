@@ -1,7 +1,6 @@
 [Unit]
 Description=MAPIO First boot service
 ConditionPathExists=!/boot/first_boot_done
-Before=docker.service
 
 [Service]
 Type=oneshot
