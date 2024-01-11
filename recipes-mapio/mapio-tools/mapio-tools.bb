@@ -7,11 +7,11 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 SRC_URI = "git://git@github.com/pcurt/mapio-tools;protocol=https;branch=main"
 SRCREV = "a08600c26e7dcce7031060bfb973da97f12a040d"
 
+S = "${WORKDIR}/git"
+
 FILES:${PN} += "/home/root/tools/cc2538-bsl.py"
 FILES:${PN} += "/home/root/tools/configuration.json"
 FILES:${PN} += "/home/root/tools/test_factory.py"
-
-S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} = "\
     python3-intelhex \
@@ -22,7 +22,7 @@ RDEPENDS:${PN} = "\
 
 do_install() {
     install -d ${D}/home/root/tools
-    install -m 0644 ${S}/cc2538-bsl.py ${D}/home/root/tools/cc2538-bsl.py 
+    install -m 0644 ${S}/cc2538-bsl.py ${D}/home/root/tools/cc2538-bsl.py
     install -m 0644 ${S}/configuration.json ${D}/home/root/tools/configuration.json
     install -m 0644 ${S}/test_factory.py ${D}/home/root/tools/test_factory.py
 }
