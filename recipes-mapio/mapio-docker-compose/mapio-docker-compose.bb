@@ -26,6 +26,7 @@ FILES:${PN} += "/data/caddy"
 FILES:${PN} += "/data/samba"
 FILES:${PN} += "/data/avahi"
 FILES:${PN} += "/data/homeassistant"
+FILES:${PN} += "/data/homeassistant/media"
 FILES:${PN} += "/data/zigbee2mqtt"
 
 RDEPENDS:${PN} = "\
@@ -46,6 +47,7 @@ do_install:append() {
     # homeassistant
     install -d ${D}/home/root/homeassistant
     install -d ${D}/data/homeassistant
+    install -d ${D}/data/homeassistant/media
     install -d ${D}/data/zigbee2mqtt
     install -m 0644 ${WORKDIR}/homeassistant-docker-compose.yml ${D}/home/root/homeassistant/docker-compose.yml
     # jellyfin

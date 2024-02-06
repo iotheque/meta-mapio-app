@@ -6,6 +6,7 @@ services:
     volumes:
       - /usr/local/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
+      - /usr/local/homeassistant/media:/media
     restart: unless-stopped
     privileged: true
     network_mode: host
