@@ -9,9 +9,9 @@ SECTION = "devel/python"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
-PYPI_SRC_URI = "git://github.com/pcurt/mapio_display;protocol=https;branch=dev"
+PYPI_SRC_URI = "git://github.com/pcurt/mapio_display;protocol=https;branch=main"
 SRC_URI = ""
-SRCREV = "522063f634e40581bce335e3d6f546db5f0e94d8"
+SRCREV = "a074f3bb054a94b464d687513195e698ee2c2193"
 
 inherit setuptools3 pypi
 
