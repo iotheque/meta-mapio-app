@@ -11,7 +11,7 @@ services:
     tty: true
     pid: host
     volumes:
-      - /mnt/movies:/share
+      - /usr/local/nvme/:/share
       - /usr/local/samba/smb.conf:/etc/samba/smb.conf
 
   avahi:

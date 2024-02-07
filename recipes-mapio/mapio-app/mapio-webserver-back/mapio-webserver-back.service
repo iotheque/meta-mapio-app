@@ -1,9 +1,9 @@
 [Unit]
-Description=MAPIO SETUP WIZARD service
+Description=MAPIO webserver backend service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/mapio_setup_wizard app
+ExecStart=/usr/bin/mapio_webserver_back app
 Restart=on-failure
 RestartSec=5
 

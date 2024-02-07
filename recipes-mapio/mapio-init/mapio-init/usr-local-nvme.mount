@@ -3,7 +3,7 @@ Description=NVME disk
 
 [Mount]
 What=/dev/nvme0n1
-Where=/mnt
+Where=/usr/local/nvme
 Type=ext4
 Options=defaults
 
