@@ -32,7 +32,7 @@ services:
     volumes:
       - /usr/local/nvme/nextcloud/nextcloud-data/:/var/www/html
     environment:
-      - NEXTCLOUD_TRUSTED_DOMAINS=ncloud.pierrickperso.ddnsfree.com
+      - NEXTCLOUD_TRUSTED_DOMAINS=example.com
       - MYSQL_HOST=nextcloud-mariadb
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
