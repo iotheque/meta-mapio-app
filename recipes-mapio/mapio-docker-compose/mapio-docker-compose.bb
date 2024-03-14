@@ -7,7 +7,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 SRC_URI = "\
     file://docker-compose.yml \
     file://smb.conf\
+    file://usr-local-mapio.service \
    "
+
+inherit systemd
 
 FILES:${PN} += "/data/domoticz"
 FILES:${PN} += "/data/homebridge"
@@ -25,7 +28,14 @@ RDEPENDS:${PN} = "\
     mosquitto \
 "
 
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE:${PN} = "usr-local-mapio.service"
+
 do_install:append() {
+    # Install bind mount service for mapio directory
+    install -d ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/usr-local-mapio.service ${D}/${systemd_unitdir}/system/
+
     # Install compose file
     install -d ${D}/home/root/mapio
     install -m 0644 ${WORKDIR}/docker-compose.yml ${D}/home/root/mapio/docker-compose.yml
