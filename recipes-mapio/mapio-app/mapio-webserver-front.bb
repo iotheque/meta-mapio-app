@@ -9,7 +9,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 DEPENDS = "nodejs-native"
 
 SRC_URI = "git://git@github.com/pcurt/mapio-webserver-front.git;protocol=https;branch=main"
-SRCREV = "5ee3def0c07c1bef772dfeebae5aca0b05c7b900"
+SRCREV = "4e53482ba93e5db742dd3ab1b0470484966585fd"
 
 # nooelint: oelint.var.order.S
 S = "${WORKDIR}/git"
