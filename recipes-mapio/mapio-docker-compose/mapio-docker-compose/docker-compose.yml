@@ -1,0 +1,149 @@
+version: "3.7"
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    depends_on:
+      - zigbee2mqtt
+    volumes:
+      - /usr/local/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /usr/local/homeassistant/media:/media
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    volumes:
+      - /usr/local/zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=Europe/Paris
+    devices:
+    # Make sure this matched your adapter location
+      - /dev/ttyS1:/dev/ttyACM0
+    network_mode: host
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - 443:443
+    environment:
+      - CADDY_INGRESS_NETWORKS=caddy
+    networks:
+      - caddy
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - /usr/local/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /usr/local/caddy/caddy_data:/data
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    network_mode: host
+    volumes:
+      - /usr/local/nvme/jellyfin:/config
+      - /usr/local/nvme/series:/data/tvshows
+      - /usr/local/nvme/movies:/data/movies
+    restart: unless-stopped
+
+  samba:
+    image: dperson/samba
+    container_name: samba
+    environment:
+      - TZ=/etc/timezone:/etc/timezone:ro
+    network_mode: host
+    depends_on:
+      - avahi
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    pid: host
+    volumes:
+      - /usr/local/nvme/:/share
+      - /usr/local/samba/smb.conf:/etc/samba/smb.conf
+
+  avahi:
+    image: epandi/avahi
+    container_name: avahi
+    volumes:
+      - /usr/local/avahi/services/:/etc/avahi/services
+    restart: unless-stopped
+    network_mode: host
+
+  db:
+    image: mariadb:10.5
+    container_name: nextcloud-mariadb
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - /usr/local/nvme/nextcloud/nextcloud-data-db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    privileged: true
+
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    restart: always
+    ports:
+     - 8092:80
+    links:
+     - db
+    depends_on:
+      - db
+    volumes:
+      - /usr/local/nvme/nextcloud/nextcloud-data/:/var/www/html
+    environment:
+      - NEXTCLOUD_TRUSTED_DOMAINS=example.com
+      - MYSQL_HOST=nextcloud-mariadb
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=mysql
+    privileged: true
+
+  domoticz:
+    image: domoticz/domoticz:stable
+    container_name: domoticz
+    restart: unless-stopped
+    #devices:
+     #- /dev/ttyUSB0:/dev/ttyUSB0
+    ports:
+      - 8080:8080
+    volumes:
+      - /usr/local/domoticz:/opt/domoticz/userdata
+    environment:
+      - TZ=Europe/Paris
+
+  homebridge:
+    image: oznu/homebridge:raspberry-pi
+    container_name: homebridge
+    restart: always
+    network_mode: host
+    volumes:
+      - /usr/local/homebridge:/homebridge
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+
+networks:
+  caddy:
+
+volumes:
+  caddy_data: {}
+  nextcloud:
+  db:

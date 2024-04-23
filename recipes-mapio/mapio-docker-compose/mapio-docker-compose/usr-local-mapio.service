@@ -1,0 +1,18 @@
+[Unit]
+Description=Bind mount volatile /home/root/mapio/
+DefaultDependencies=no
+Before=local-fs.target
+RequiresMountsFor=/usr/local /home/root/mapio
+ConditionPathIsReadWrite=/usr/local
+ConditionPathExists=/home/root/mapio/
+
+[Service]
+Type=oneshot
+RemainAfterExit=Yes
+TimeoutSec=0
+Environment=MOUNT_COPYBIND_AVOID_OVERLAYFS=0
+ExecStart=/sbin/mount-copybind /usr/local/mapio /home/root/mapio/
+ExecStop=/bin/umount /home/root/mapio/
+
+[Install]
+WantedBy=local-fs.target
