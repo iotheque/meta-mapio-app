@@ -5,6 +5,7 @@ systemctl stop docker
 systemctl stop docker.socket
 systemctl stop usr-local-nvme.automount
 systemctl stop usr-local-nvme.mount
+systemctl stop usr-local-mapio.service
 
 # Resize data partiton to maximal size
 umount /dev/mmcblk1p4
