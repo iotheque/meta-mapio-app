@@ -139,6 +139,23 @@ services:
       - PUID=1000
       - HOMEBRIDGE_CONFIG_UI=1
       - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    
+  resticprofile:
+    image: creativeprojects/resticprofile:latest
+    container_name: resticprofile
+    entrypoint: '/bin/sh'
+    command:
+      - '-c'
+      - 'resticprofile schedule --all && crond -f'
+    volumes:
+      - /usr/local/resticprofile/profiles.yaml:/etc/resticprofile/profiles.yaml:ro
+      - /usr/local/resticprofile/key:/etc/resticprofile/key:ro
+      - /usr/local/homeassistant:/homeassistant
+      - /usr/local/caddy:/caddy
+      - /usr/local/mapio:/mapio
+      - /usr/local/zigbee2mqtt:/zigbee2mqtt
+    environment:
+      - TZ=Europe/Paris
 
 networks:
   caddy:

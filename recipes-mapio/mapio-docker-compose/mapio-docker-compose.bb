@@ -8,6 +8,7 @@ SRC_URI = "\
     file://docker-compose.yml \
     file://smb.conf\
     file://usr-local-mapio.service \
+    file://profiles.yaml \
    "
 
 inherit systemd
@@ -20,9 +21,11 @@ FILES:${PN} += "/data/avahi"
 FILES:${PN} += "/data/homeassistant"
 FILES:${PN} += "/data/homeassistant/media"
 FILES:${PN} += "/data/zigbee2mqtt"
+FILES:${PN} += "/data/resticprofile"
 
 FILES:${PN} += "/home/root/mapio/docker-compose.yml "
 FILES:${PN} += "/data/samba/smb.conf"
+FILES:${PN} += "/data/resticprofile/profiles.yaml"
 
 RDEPENDS:${PN} = "\
     mosquitto \
@@ -35,7 +38,6 @@ do_install:append() {
     # Install bind mount service for mapio directory
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/usr-local-mapio.service ${D}/${systemd_unitdir}/system/
-
     # Install compose file
     install -d ${D}/home/root/mapio
     install -m 0644 ${WORKDIR}/docker-compose.yml ${D}/home/root/mapio/docker-compose.yml
@@ -52,4 +54,7 @@ do_install:append() {
     install -d ${D}/data/zigbee2mqtt
     # caddy
     install -d ${D}/data/caddy
+    # resticprofile
+    install -d ${D}/data/resticprofile
+    install -m 0644 ${WORKDIR}/profiles.yaml ${D}/data/resticprofile/profiles.yaml
 }
