@@ -1,0 +1,26 @@
+global:
+  scheduler: crond
+
+default:
+  password-file: key
+  repository: sftp:xx.xx.xx.xx:/data
+  initialize: true
+  backup:
+    source:
+      - /homeassistant
+      - /caddy
+      - /mapio
+      - /zigbee2mqtt
+      - /etc/resticprofile
+    exclude-caches: true
+    one-file-system: true
+    schedule: "03:00,00"
+    schedule-permission: system
+    check-before: true
+  retention:
+    before-backup: false
+    after-backup: true
+    keep-monthly: 1
+    keep-yearly: 1
+    keep-last: 10
+    prune: true
