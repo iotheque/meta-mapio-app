@@ -1,10 +1,10 @@
 SUMMARY = "MAPIO tools"
 DESCRIPTION = "Add some specific tools for MAPIO"
-HOMEPAGE = "https://github.com/pcurt/mapio-tools"
+HOMEPAGE = "https://github.com/iotheque/mapio-tools"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
-SRC_URI = "git://git@github.com/pcurt/mapio-tools;protocol=https;branch=main"
+SRC_URI = "git://git@github.com/iotheque/mapio-tools;protocol=https;branch=main"
 SRCREV = "a08600c26e7dcce7031060bfb973da97f12a040d"
 
 S = "${WORKDIR}/git"

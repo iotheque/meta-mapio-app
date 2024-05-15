@@ -3,12 +3,12 @@ DESCRIPTION = "\
     This Python wheel contains the applicative code to manage some \
     MAPIO GPIOs from Home Assistant."
 
-HOMEPAGE = "https://github.com/pcurt/mapio_gpio_ha"
+HOMEPAGE = "https://github.com/iotheque/mapio_gpio_ha"
 SECTION = "devel/python"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
-PYPI_SRC_URI = "git://github.com/pcurt/mapio_gpio_ha;protocol=https;branch=main"
+PYPI_SRC_URI = "git://github.com/iotheque/mapio_gpio_ha;protocol=https;branch=main"
 SRC_URI = ""
 SRCREV = "b4c037144fb2a0410fe140b352bcadea96588669"
 

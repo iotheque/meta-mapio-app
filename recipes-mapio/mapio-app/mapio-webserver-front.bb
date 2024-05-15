@@ -1,14 +1,14 @@
 SUMMARY = "MAPIO webserver front"
 DESCRIPTION = "\
     MAPIO webserver frontend"
-HOMEPAGE = "https://github.com/pcurt/mapio-webserver-front"
+HOMEPAGE = "https://github.com/iotheque/mapio-webserver-front"
 SECTION = "devel/python"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
 DEPENDS = "nodejs-native"
 
-SRC_URI = "git://git@github.com/pcurt/mapio-webserver-front.git;protocol=https;branch=main"
+SRC_URI = "git://git@github.com/iotheque/mapio-webserver-front.git;protocol=https;branch=main"
 SRCREV = "173d1ad43cc28dfdae7d1c859cba9cf282d88357"
 
 # nooelint: oelint.var.order.S
