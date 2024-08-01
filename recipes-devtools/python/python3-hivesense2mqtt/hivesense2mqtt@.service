@@ -1,0 +1,11 @@
+[Unit]
+Description=Hivesense2mqtt
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hivesense2mqtt
+EnvironmentFile=/usr/local/hivesense2mqtt/env.%i
+
+[Install]
+WantedBy=multi-user.target
+
