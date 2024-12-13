@@ -9,7 +9,7 @@ SRC_URI = "\
     file://mapio-init.service \
     file://usr-local-nvme.mount \
     file://usr-local-nvme.automount \
-   "
+"
 
 inherit systemd
 

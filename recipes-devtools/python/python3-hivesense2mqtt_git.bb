@@ -9,7 +9,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 
 SRC_URI:append = " \
     file://hivesense2mqtt@.service \
-   "
+"
 
 PYPI_SRC_URI = "git://github.com/pcurt/hivesense2mqtt;protocol=https;branch=main"
 SRC_URI = ""

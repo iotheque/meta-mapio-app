@@ -9,7 +9,7 @@ SRC_URI = "\
     file://smb.conf\
     file://usr-local-mapio.service \
     file://profiles.yaml \
-   "
+"
 
 inherit systemd
 
