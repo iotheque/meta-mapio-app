@@ -39,8 +39,8 @@ do_install:append() {
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/usr-local-mapio.service ${D}/${systemd_unitdir}/system/
     # Install compose file
-    install -d ${D}/home/root/mapio
-    install -m 0644 ${WORKDIR}/docker-compose.yml ${D}/home/root/mapio/docker-compose.yml
+    install -d ${D}/${ROOT_HOME}/mapio
+    install -m 0644 ${WORKDIR}/docker-compose.yml ${D}/${ROOT_HOME}/mapio/docker-compose.yml
     # domoticz
     install -d ${D}/data/domoticz
     install -d ${D}/data/homebridge
