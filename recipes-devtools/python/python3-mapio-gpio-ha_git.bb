@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 
 PYPI_SRC_URI = "git://github.com/iotheque/mapio_gpio_ha;protocol=https;branch=main"
 SRC_URI = ""
-SRCREV = "02fc74d7f028bc0544d494a4e9798964c045d39b"
+SRCREV = "a208d0245ac157a7e4a1bc326006b0ce75056d92"
 
 inherit setuptools3 pypi
 

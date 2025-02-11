@@ -1,6 +1,6 @@
 [Unit]
 Description=MAPIO GPIO HA service
-After=mosquitto.service
+After=mosquitto.service docker.service
 Wants=mosquitto.service
 
 [Service]
