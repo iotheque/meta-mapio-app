@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 
 PYPI_SRC_URI = "git://github.com/iotheque/mapio-webserver-back.git;protocol=https;branch=main"
 SRC_URI = ""
-SRCREV = "320d086dfd66c8e28066556fe0debb3ee00e061d"
+SRCREV = "24e219fa49beeacaf82266583d5537f39cce8137"
 
 inherit setuptools3 pypi
 
@@ -20,6 +20,7 @@ S = "${WORKDIR}/git"
 RDEPENDS:${PN} = "\
     python3-flask \
     python3-flask-cors \
+    python3-pyyaml \
     python3-waitress \
     python3-werkzeug \
 "
