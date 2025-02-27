@@ -22,7 +22,7 @@ FILES:${PN} += "/data/homeassistant"
 FILES:${PN} += "/data/homeassistant/media"
 FILES:${PN} += "/data/zigbee2mqtt"
 FILES:${PN} += "/data/resticprofile"
-
+FILES:${PN} += "/data/wireguard"
 FILES:${PN} += "/home/root/mapio/docker-compose.yml "
 FILES:${PN} += "/data/samba/smb.conf"
 FILES:${PN} += "/data/resticprofile/profiles.yaml"
@@ -57,4 +57,6 @@ do_install:append() {
     # resticprofile
     install -d ${D}/data/resticprofile
     install -m 0644 ${WORKDIR}/profiles.yaml ${D}/data/resticprofile/profiles.yaml
+    # wireguard
+    install -d ${D}/data/wireguard
 }
