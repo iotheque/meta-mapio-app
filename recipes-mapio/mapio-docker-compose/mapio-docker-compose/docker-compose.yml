@@ -175,7 +175,56 @@ services:
         - WG_HOST=mapio.local
         # Optional:
         - PASSWORD_HASH=$$2y$$10$$hBCoykrB95WSzuV4fafBzOHWKu9sbyVa34GJr8VV5R/pIelfEMYyG # (needs double $$, hash of 'foobar123')
-        
+
+  otbr:
+    container_name: otbr
+    image: ghcr.io/iotheque/mapio-otbr-docker:1.0.0
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+    environment:
+      DEVICE: "/dev/ttyAMA5"
+      # Change according to your internet connection method
+      BACKBONE_IF: wlan0
+      FLOW_CONTROL: 0
+      FIREWALL: 0
+      NAT64: 1
+      BAUDRATE: 115200
+      OTBR_REST_PORT: 8081
+      OTBR_WEB_PORT: 7586
+      AUTOFLASH_FIRMWARE: 0
+    devices:
+      # Change according the RF slot
+      - /dev/ttyAMA5:/dev/ttyAMA5
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - /usr/local/otbr_data:/var/lib/thread
+
+  matter-server:
+    image: ghcr.io/home-assistant-libs/python-matter-server:stable
+    container_name: matter-server
+    restart: unless-stopped
+    network_mode: host
+    privileged: true
+    depends_on:
+      - otbr
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /usr/local/matter_data:/data/
+      - /run/dbus:/run/dbus:ro
+      - /etc/localtime:/etc/localtime:ro
+    # Change according to your internet connection method
+    command: >
+      --storage-path /data
+      --paa-root-cert-dir /data/credentials
+      --bluetooth-adapter 0
+      --log-level-sdk progress
+      --primary-interface wlan0
+
 networks:
   caddy:
 

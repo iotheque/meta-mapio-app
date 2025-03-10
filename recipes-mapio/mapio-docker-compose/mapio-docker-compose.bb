@@ -9,6 +9,7 @@ SRC_URI = "\
     file://smb.conf\
     file://usr-local-mapio.service \
     file://profiles.yaml \
+    file://matter.conf \
 "
 
 inherit systemd
@@ -26,6 +27,8 @@ FILES:${PN} += "/data/wireguard"
 FILES:${PN} += "/home/root/mapio/docker-compose.yml "
 FILES:${PN} += "/data/samba/smb.conf"
 FILES:${PN} += "/data/resticprofile/profiles.yaml"
+FILES:${PN} += "/data/otbr_data"
+FILES:${PN} += "/data/matter_data"
 
 RDEPENDS:${PN} = "\
     mosquitto \
@@ -59,4 +62,9 @@ do_install:append() {
     install -m 0644 ${WORKDIR}/profiles.yaml ${D}/data/resticprofile/profiles.yaml
     # wireguard
     install -d ${D}/data/wireguard
+    # OTBR and matter
+    install -d ${D}${sysconfdir}/sysctl.d
+    install -m 0644 ${WORKDIR}/matter.conf ${D}${sysconfdir}/sysctl.d/matter.conf
+    install -d ${D}/data/otbr_data
+    install -d ${D}/data/matter_data
 }
