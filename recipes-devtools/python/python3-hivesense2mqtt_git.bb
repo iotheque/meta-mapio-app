@@ -13,7 +13,7 @@ SRC_URI:append = " \
 
 PYPI_SRC_URI = "git://github.com/pcurt/hivesense2mqtt;protocol=https;branch=main"
 SRC_URI = ""
-SRCREV = "23c843c61904c79457bcb6f88ea778a570dff316"
+SRCREV = "53e4bad6468eefef7bb0b24824f2301967cca9f9"
 
 inherit setuptools3 pypi systemd
 
