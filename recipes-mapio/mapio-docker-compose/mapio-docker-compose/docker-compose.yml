@@ -225,6 +225,16 @@ services:
       --log-level-sdk progress
       --primary-interface wlan0
 
+  teleinfo2mqtt:
+    image: fmartinou/teleinfo2mqtt:latest
+    container_name: teleinfo2mqtt
+    network_mode: host
+    restart: unless-stopped
+    devices:
+      - /dev/ttyAMA3:/dev/ttyUSB0
+    environment:
+      - MQTT_URL=mqtt://localhost:1883
+
 networks:
   caddy:
 
