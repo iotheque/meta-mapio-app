@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 
 PYPI_SRC_URI = "git://github.com/iotheque/mapio-webserver-back.git;protocol=https;branch=main"
 SRC_URI = ""
-SRCREV = "24e219fa49beeacaf82266583d5537f39cce8137"
+SRCREV = "a6afa571bfa42c35930e0b8e7d3424275af5ebb9"
 
 inherit setuptools3 pypi
 
