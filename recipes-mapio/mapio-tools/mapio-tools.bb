@@ -5,7 +5,7 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171dd6425610833a22dbe6"
 
 SRC_URI = "git://git@github.com/iotheque/mapio-tools;protocol=https;branch=main"
-SRCREV = "4749e12bd07d1a24e1a3b380ade99d5e306c4b57"
+SRCREV = "79e9a44b0944840342e3e84648492145985c8708"
 
 S = "${WORKDIR}/git"
 
